@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tipPercentageControl;
+@property (weak, nonatomic) IBOutlet UIView *labelsContainerView;
 
 @end
 
@@ -28,6 +29,11 @@
 }
 
 - (IBAction)updateLabels:(id)sender {
+    
+    if(self.billField.text.length == 0){
+        [self hideLabels];
+    }
+    
     double tipPercentages[] = {0.15, 0.20, 0.25};
     
     double tipPercentage = tipPercentages[self.tipPercentageControl.selectedSegmentIndex];
@@ -41,6 +47,23 @@
     self.totalLabel.text = [NSString stringWithFormat:@"$%.2f", total];
 }
 
+- (void)hideLabels {
+    [UIView animateWithDuration:0.5 animations:^{
+        CGRect billFrame = self.billField.frame;
+        billFrame.origin.y += 200;
+        
+        self.billField.frame = billFrame;
+        
+        CGRect labelFrame = self.labelsContainerView.frame;
+        labelFrame.origin.y += 200;
+        
+        self.labelsContainerView.frame = labelFrame;
+        
+        self.labelsContainerView.alpha = 0;
+    }];
+    
+ 
+}
 /*
 #pragma mark - Navigation
 
