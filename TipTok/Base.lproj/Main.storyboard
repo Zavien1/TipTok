@@ -27,7 +27,6 @@
         <!--TipTok-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="TipViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -103,7 +102,13 @@
                             <outletCollection property="gestureRecognizers" destination="zZB-Yc-E38" appends="YES" id="DDU-hy-WEy"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="TipTok" id="hdT-KM-Kls"/>
+                    <navigationItem key="navigationItem" title="TipTok" id="hdT-KM-Kls">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="E67-UZ-A81">
+                            <connections>
+                                <segue destination="hPb-Mi-6FI" kind="show" id="5X5-cL-LL7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="billField" destination="0f6-Iq-IZD" id="plc-59-0zy"/>
                         <outlet property="tipLabel" destination="w4x-93-gJW" id="gN8-dw-tce"/>
@@ -111,9 +116,26 @@
                         <outlet property="totalLabel" destination="QqY-uQ-Ziv" id="uJO-1g-U7z"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="zZB-Yc-E38"/>
             </objects>
-            <point key="canvasLocation" x="252" y="-48"/>
+            <point key="canvasLocation" x="119" y="69"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="tuF-Ae-vg3">
+            <objects>
+                <viewController id="hPb-Mi-6FI" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wMA-K2-C1Y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="9K2-XH-tsR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hvi-fp-4yT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tTf-TL-opy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="825" y="69"/>
         </scene>
     </scenes>
     <resources>
