@@ -7,11 +7,14 @@
 
 #import "TipViewController.h"
 
+
+
 @interface TipViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *billField;
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *tipPercentageControl;
+@property (weak, nonatomic) IBOutlet UIView *labelsContainerView;
+@property (weak, nonatomic) IBOutlet UIView *billFieldView;
 
 @end
 
@@ -20,25 +23,80 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-}
-- (IBAction)onTap:(id)sender {
-    NSLog(@"Hello World");
+    [self hideLabels];
+    [self.billField becomeFirstResponder];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    [self.view endEditing:(true)];
-}
-
-- (IBAction)updateLabels:(id)sender {
-    double tipPercentages[] = {0.15, 0.20, 0.25};
-    
-    double tipPercentage = tipPercentages[self.tipPercentageControl.selectedSegmentIndex];
+    double tipValue = [defaults doubleForKey:@"tipPercent"];
     
     double bill = [self.billField.text doubleValue];
-    double tip = bill * tipPercentage;
+    double tip = bill * tipValue;
     double total = bill + tip;
     
     self.tipLabel.text = [NSString stringWithFormat:@"$%.2f", tip];
     
     self.totalLabel.text = [NSString stringWithFormat:@"$%.2f", total];
+    
+}
+
+
+
+
+- (IBAction)updateLabels:(id)sender {
+    
+if(self.billField.text.length > 0){
+        [self showLabels];
+    } else {
+        [self hideLabels];
+    }
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    double tipValue = [defaults doubleForKey:@"tipPercent"];
+    
+    double bill = [self.billField.text doubleValue];
+    double tip = bill * tipValue;
+    double total = bill + tip;
+    
+    self.tipLabel.text = [NSString stringWithFormat:@"$%.2f", tip];
+    
+    self.totalLabel.text = [NSString stringWithFormat:@"$%.2f", total];
+    
+}
+
+- (void)showLabels {
+    [UIView animateWithDuration:0.5 animations:^{
+        CGRect billFrame = self.billFieldView.frame;
+        billFrame.origin.y = 90;
+        
+        self.billFieldView.frame = billFrame;
+        self.billFieldView.backgroundColor = [UIColor systemGreenColor];
+        
+        CGRect labelFrame = self.labelsContainerView.frame;
+        labelFrame.origin.y = 314;
+        
+        self.labelsContainerView.frame = labelFrame;
+        
+        self.labelsContainerView.alpha = 1;
+    }];
+    
+ 
+}
+
+- (void)hideLabels {
+    [UIView animateWithDuration:0.5 animations:^{
+        CGRect billFrame = self.billFieldView.frame;
+        billFrame.origin.y = 383;
+        
+        self.billFieldView.frame = billFrame;
+        
+        CGRect labelFrame = self.labelsContainerView.frame;
+        labelFrame.origin.y = 563;
+        
+        self.labelsContainerView.frame = labelFrame;
+        
+        self.labelsContainerView.alpha = 0;
+        self.billFieldView.backgroundColor = [UIColor whiteColor];
+    }];
 }
 
 /*

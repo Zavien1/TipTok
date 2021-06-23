@@ -36,6 +36,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		13DB649B2682BFEC0033BB82 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1310BFFE26826A5D00B66E02 /* TipTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1310C00126826A5D00B66E02 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -152,6 +165,7 @@
 				1310BFFA26826A5D00B66E02 /* Sources */,
 				1310BFFB26826A5D00B66E02 /* Frameworks */,
 				1310BFFC26826A5D00B66E02 /* Resources */,
+				13DB649B2682BFEC0033BB82 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
